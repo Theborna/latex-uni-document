@@ -6,12 +6,13 @@
 \usepackage{lastpage}
 \usetikzlibrary{calc}
 %\usetikzlibrary{patterns}
-\usepackage[
-  automark,
-  autooneside=false,% <- needed if you want to use \leftmark and \rightmark in a onesided document
-  headsepline,
-  footsepline
-]{scrlayer-scrpage}
+% \usepackage[
+%   automark,
+%   autooneside=false,% <- needed if you want to use \leftmark and \rightmark in a onesided document
+%   headsepline,
+%   footsepline
+% ]{scrlayer-scrpage}
+\usepackage{fancyhdr}
 \usepackage{calc}
 \newcommand{\sigline}[1]{\makebox[\widthof{#1~}]{.\dotfill}}
 % to support english documents
@@ -24,27 +25,27 @@
 \ProcessOptions\relax
 \if@mylang
 \newcommand{\initStyle}{
-  \renewcommand{\title}{\sigline{title of document}}
-  \renewcommand{\author}{\sigline{name of professor}}
+    \newcommand{\mytitle}{\sigline{title of document}}
+    \newcommand{\myauthor}{\sigline{name of professor}}
     \newcommand{\department}{department: \sigline{department}}
-    \renewcommand{\subject}{\sigline{subject of document}}
+    \newcommand{\subject}{\sigline{subject of document}}
     \newcommand{\info}{author: \sigline{author name}}
-    \renewcommand{\subtitle}{\,}
+    \newcommand{\subtitle}{\,}
     \renewcommand{\date}{date: \sigline{1400/00/00}}
   }
 \else
   \newcommand{\initStyle}{
-    \renewcommand{\title}{\sigline{موضوع فایل}}
-    \renewcommand{\author}{\sigline{نام استاد}}
+    \newcommand{\mytitle}{\sigline{موضوع فایل}}
+    \newcommand{\myauthor}{\sigline{نام استاد}}
     \newcommand{\department}{دانشکده: \sigline{نام دانشکده}}
-    \renewcommand{\subject}{\sigline{موضوع برگه عنوان}}
+    \newcommand{\subject}{\sigline{موضوع برگه عنوان}}
     \newcommand{\info}{نویسنده: \sigline{نام نویسنده}}
-    \renewcommand{\subtitle}{\,}
+    \newcommand{\subtitle}{\,}
     \renewcommand{\date}{تاریخ: \sigline{1400/00/00}}
   }
 \fi
 
-\newcommand{\setTitle}[1]{\renewcommand{\title}{#1}}
+\newcommand{\setTitle}[1]{\renewcommand{\mytitle}{#1}}
 \newcommand{\setProf}[1]{\renewcommand{\author}{#1}}
 \newcommand{\setDepartment}[1]{\renewcommand{\department}{#1}}
 \newcommand{\setSubject}[1]{\renewcommand{\subject}{#1}}
@@ -76,8 +77,12 @@
 }
 
 
-\ihead*{\Ifstr{\leftmark}{\rightbotmark}{\title}{\rightbotmark}}
-\ohead{\Ifstr{\leftmark}{\rightbotmark}{\subject}{\rightbotmark}}
-\cfoot*{\pagemark-\pageref{LastPage}}
+% \rhead*{\Ifstr{\leftmark}{\rightbotmark}{\mytitle}{\rightbotmark}}
+% \lhead{\Ifstr{\leftmark}{\rightbotmark}{\subject}{\rightbotmark}}
 % \renewcommand*\chapterpagestyle{scrheadings}
+\rhead{\mytitle}
+\lhead{\subject}
+\cfoot{\thepage-\pageref{LastPage}}
+\renewcommand{\footrulewidth}{1pt}
+\pagestyle{fancy}
 \initStyle
