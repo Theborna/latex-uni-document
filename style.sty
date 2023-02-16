@@ -4,6 +4,7 @@
 \usepackage[a4paper ,margin=1in, headheight=16pt]{geometry}
 \usepackage{tikz}
 \usepackage{lastpage}
+\usepackage[most]{tcolorbox}
 \usetikzlibrary{calc}
 %\usetikzlibrary{patterns}
 % \usepackage[
@@ -33,6 +34,7 @@
     \newcommand{\subtitle}{\,}
     \renewcommand{\date}{date: \sigline{1400/00/00}}
   }
+  \newcommand{\defsolvetitle}{Soloution}
 \else
   \newcommand{\initStyle}{
     \newcommand{\mytitle}{\sigline{موضوع فایل}}
@@ -43,6 +45,7 @@
     \newcommand{\subtitle}{\,}
     \renewcommand{\date}{تاریخ: \sigline{1400/00/00}}
   }
+  \newcommand{\defsolvetitle}{پاسخ}
 \fi
 
 \newcommand{\setTitle}[1]{\renewcommand{\mytitle}{#1}}
@@ -66,7 +69,7 @@
   }
 \fi
 
-\newcommand{\natije}[1]{
+\newcommand{\conclusion}[1]{
   % \vspace*{1em}\\
   \rule{\textwidth}{0.5pt}
   \begin{abstract}
@@ -76,10 +79,8 @@
   \rule{\textwidth}{0.5pt}
 }
 
+\newcommand{\qsolve}[2][\defsolvetitle]{\begin{tcolorbox}[title=#1]#2\end{tcolorbox}}
 
-% \rhead*{\Ifstr{\leftmark}{\rightbotmark}{\mytitle}{\rightbotmark}}
-% \lhead{\Ifstr{\leftmark}{\rightbotmark}{\subject}{\rightbotmark}}
-% \renewcommand*\chapterpagestyle{scrheadings}
 \rhead{\mytitle}
 \lhead{\subject}
 \cfoot{\thepage/\pageref{LastPage}}
