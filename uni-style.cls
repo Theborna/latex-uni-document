@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{uni-style}[2023/02/23 ...]
-\LoadClass{article}
+\LoadClassWithOptions{article}
 
 \usepackage{graphicx}
 \usepackage{xcolor}
