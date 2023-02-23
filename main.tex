@@ -1,16 +1,33 @@
 \documentclass[12pt]{article}
 \usepackage{blindtext}
-\usepackage[bordered]{style}
-\setTitle{my document}
-\setSubtitle{my cool document}
-\setProf{mr brown}
-\setSubject{homework: 1}
-\setDate{\today}
-\usepackage{xepersian}
-\settextfont{Yas}
+\usepackage[en,bordered]{uni-style}
+
+\title{my document}
+\prof{professor brown}
+\subtitle{latex and documents}
+\subject{homework 1}
+\info{
+    \begin{tabular}{lr}
+        borna & myStudentNumber\\
+        github    & \href{https://github.com/Theborna/latex-uni-document}{repository}\\
+    \end{tabular}
+}
+\date{\today}
+% \usepackage{xepersian}
+% \settextfont{Yas}
+    
 \begin{document}
-\input{titlepage.tex}
+\maketitlepage
+\maketitlestart
 \blindtext[2]
+\footnote{footnote lol}
+\begin{qsolve}[My conclusion]
+	we see that $$2+2=4$$
+\end{qsolve}
 \vfil
-\conclusion{\blindtext}
+\begin{conclusion}
+	\blindtext
+\end{conclusion}
+\clearpage
+\blinddocument
 \end{document}

@@ -1,0 +1,12 @@
+\ProvidesPackage{uni-environments}[2023/02/23 ...]
+
+\newenvironment{conclusion}{
+    \begin{center}
+        \rule{0.9\linewidth}{0.5pt}
+        \begin{abstract}}{
+        \end{abstract}
+        \rule{0.9\linewidth}{0.5pt}
+    \end{center}
+}
+
+\newenvironment{qsolve}[1][\@defsolvetitle]{\begin{tcolorbox}[title=#1]}{\end{tcolorbox}}
