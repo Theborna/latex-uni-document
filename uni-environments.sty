@@ -15,6 +15,7 @@
             % coltitle=blue!20!black,
         ]}{\end{tcolorbox}}
 
+\newcommand*{\splitqsolve}{\end{qsolve}\begin{qsolve}[]}
 % \newcommand{\FourQuads}[8]{
 %     \begin{tcbraster}[raster columns=2, raster rows=2, raster height=.65\textheight,
 %             enhanced, size=small, sharp corners, boxrule=0pt,
@@ -89,6 +90,7 @@
     \parbox[t]{\maincolumnwidth}{\strut\sectionstyle{#1}}%
     \par\nobreak\addvspace{1ex}\@afterheading
 }% to avoid a pagebreak after the heading
+\renewcommand*{\section}[1]{def}
 
 \renewcommand*{\subsection}[1]{%
     \par\addvspace{1ex}%
