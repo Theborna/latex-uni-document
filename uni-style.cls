@@ -35,6 +35,9 @@
 
 \newcommand{\sigline}[1]{\makebox[\widthof{#1~}]{.\dotfill}}
 \RequirePackageWithOptions{uni-variable}
+
+\definecolor{color1}{rgb}{0,0,0}% primary theme color
+
 \RequirePackage{uni-environments}
 
 \RequirePackage{fancyhdr}
