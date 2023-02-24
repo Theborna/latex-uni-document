@@ -54,19 +54,27 @@
     \noindent
     {\centering
         \begin{minipage}{0.85\textwidth}
-            {\Huge\sffamily\bfseries\@title}\par \vspace{0.1em}
+            {\Huge\bfseries\@title}\par \vspace{0.1em}
             \footnotesize{\@subject}\\
             \vfill
-            \@info\\
+            \@info\\[1em]
             % \@subtitle\\
         \end{minipage}% PUT THIS HERE!
         \begin{minipage}{0.15\textwidth}
             \includegraphics[width=\linewidth,keepaspectratio]{\@logotwo}
-            \vspace{1em}
+            % \\\@department
+            \vspace{0.1em}
         \end{minipage}
         \noindent\rule{0.98\textwidth}{1pt}\\[1em]
         \medskip
         \pagestyle{normalpage}
         \thispagestyle{firstpage}
     }
+}
+
+\newcommand{\makeendpage}{
+    \vfil
+    \begin{center}
+        \Huge{\@End\ \@subject}
+    \end{center}
 }
