@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uni-style}[2023/02/23 ...]
-\LoadClassWithOptions{article}
+\ProvidesPackage{uni-style}[2023/02/23 ...]
+% \LoadClassWithOptions{article}
 
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -24,6 +24,11 @@
 \usepackage[most]{tcolorbox}
 \usetikzlibrary{calc}
 \usepackage{calc}
+
+% \makeatletter
+\newcommand{\RTList}{\raggedleft\rightskip\@totalleftmargin} 
+\newcommand{\LTList}{\raggedright\leftskip\@totalrightmargin} 
+% \makeatother
 
 % to support english documents
 \newif\if@mylang\@mylangfalse
