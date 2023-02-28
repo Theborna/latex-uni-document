@@ -6,3 +6,7 @@
 \newcommand{\pderivv}[2]{\pderiv{}{#2}\left(#1\right)}
 \newcommand{\fourier}[2][t]{\int_{-\infty}^{\infty}#2 e^{-j\omega #1}d#1}
 \newcommand{\ifourier}[2][t]{\frac{1}{2\pi}\int_{-\infty}^{\infty}#2 e^{j\omega #1}d\omega}
+\newcommand{\letm}{\text{let:}\ }
+\newcommand{\when}{\Big|}
+\newcommand{\convolve}[3][t]{\int_{-\infty}^{\infty}#2(\tau)#3(#1-\tau)d\tau}
+\newcommand{\donvolve}[3][k]{\sum_{k=-\infty}^{\infty}#2[k]#3[#1-k]}
