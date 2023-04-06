@@ -1,5 +1,6 @@
 \RequirePackage{xcolor}
 \RequirePackage{listings}
+\RequirePackage{matlab-prettifier}
 % default code style
 % Default fixed font does not support bold face
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -90,3 +91,5 @@ frame=tb,
       \fi\fi\fi
 }
 
+\newenvironment{matlab}{\begin{lstlisting}[style=Matlab-editor]
+  }{\end{lstlisting}}
