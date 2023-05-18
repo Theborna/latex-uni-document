@@ -1,3 +1,7 @@
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+
+
 \newcommand{\barthrough}{\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
 \newcommand{\dbar}{d\barthrough}
 \newcommand{\deriv}[3][]{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}
@@ -15,3 +19,5 @@
 \newcommand{\real}[1]{\mathbf{Re}\{#1\}}
 \newcommand{\imag}[1]{\mathbf{Imag}\{#1\}}
 \newcommand{\order}[1]{\mathcal{O}\left(#1\right)}
+
+\newenvironment{lcases}{\left.\begin{array}{ll}}{\end{array}\right\}}
