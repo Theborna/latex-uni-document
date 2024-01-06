@@ -83,7 +83,14 @@
 \settoheight{\baseletterheight}{\sectionstyle{o}}
 \setlength{\baseletterheight}{\baseletterheight-0.95ex}
 
-\renewcommand*{\section}[1]{%
+
+\RenewDocumentCommand\section{s}{%
+  \IfBooleanTF#1%
+  {\sectionstar}% If a star is seen
+  {\sectionnorm}%     If no star is seen
+ }
+
+\newcommand*{\sectionnorm}[1]{%
     \par\addvspace{2.5ex}%
     \phantomsection{}% reset the anchor for hyperrefs
     \addcontentsline{toc}{section}{#1}%
@@ -94,7 +101,25 @@
     \par\nobreak\addvspace{1ex}\@afterheading
 }% to avoid a pagebreak after the heading
 
-\renewcommand*{\subsection}[1]{%
+\newcommand*{\sectionstar}[1]{%
+    \par\addvspace{2.5ex}%
+    \phantomsection{}% reset the anchor for hyperrefs
+    \addcontentsline{toc}{section}{#1}%
+    \hspace*{-\columntoffset}
+    \parbox[t]{\hintscolumnwidth}{\raggedleft\raisebox{\baseletterheight}{\color{color1}\rule{\hintscolumnwidth}{0.95ex}}}%
+    \hspace{\separatorcolumnwidth}%
+    \parbox[t]{\maincolumnwidth}{\strut\sectionstyle{#1}}%
+    \par\nobreak\addvspace{1ex}\@afterheading
+}% to avoid a pagebreak after the heading
+
+
+\RenewDocumentCommand\subsection{s}{%
+    \IfBooleanTF#1%
+    {\subsectionstar}% If a star is seen
+    {\subsectionnorm}%     If no star is seen
+}
+
+\newcommand*{\subsectionstar}[1]{%
     \par\addvspace{1ex}%
     \phantomsection{}% reset the anchor for hyperrefs
     \addcontentsline{toc}{subsection}{#1}%
@@ -105,7 +130,25 @@
     \par\nobreak\addvspace{0.5ex}\@afterheading
 }% to avoid a pagebreak after the heading
 
-\renewcommand*{\subsubsection}[1]{%
+\newcommand*{\subsectionnorm}[1]{%
+    \par\addvspace{1ex}%
+    \phantomsection{}% reset the anchor for hyperrefs
+    \addcontentsline{toc}{subsection}{#1}%
+    \hspace*{-\columntoffset}
+    \parbox[t]{0.5\hintscolumnwidth}{\strut\raggedleft\raisebox{\baseletterheight}{\color{color1}\rule{0.5\hintscolumnwidth}{0.95ex}}}%
+    \hspace{\separatorcolumnwidth}%
+    {\strut\subsectionstyle{#1}}
+    \par\nobreak\addvspace{0.5ex}\@afterheading
+}% to avoid a pagebreak after the heading
+
+\RenewDocumentCommand\subsubsection{s}{%
+    \IfBooleanTF#1%
+    {\subsubsectionstar}% If a star is seen
+    {\subsubsectionnorm}%     If no star is seen
+}
+
+
+\newcommand*{\subsubsectionstar}[1]{%
     \par\addvspace{0.5ex}%
     \phantomsection{}% reset the anchor for hyperrefs
     \addcontentsline{toc}{subsection}{#1}%
@@ -115,3 +158,64 @@
     {\strut\subsectionstyle{#1}}
     \par\nobreak\addvspace{0.25ex}\@afterheading
 }% to avoid a pagebreak after the heading
+
+\newcommand*{\subsubsectionnorm}[1]{%
+    \par\addvspace{0.5ex}%
+    \phantomsection{}% reset the anchor for hyperrefs
+    \addcontentsline{toc}{subsection}{#1}%
+    \hspace*{-\columntoffset}
+    \parbox[t]{0.25\hintscolumnwidth}{\strut\raggedleft\raisebox{\baseletterheight}{\color{color1}\rule{0.25\hintscolumnwidth}{0.95ex}}}%
+    \hspace{\separatorcolumnwidth}%
+    {\strut\subsectionstyle{#1}}
+    \par\nobreak\addvspace{0.25ex}\@afterheading
+}% to avoid a pagebreak after the heading
+
+
+% Table of contents
+
+% \renewcommand\contentsname{}
+% \renewcommand\listfigurename{}
+% \renewcommand\listtablename{}
+% \usepackage[utf8]{inputenc}
+% \usepackage[titles]{tocloft}
+% % \usepackage{kpfonts}
+% \usepackage{tikz}
+% \definecolor{doc}{RGB}{0,60,110}
+% \usepackage{titletoc}
+% \contentsmargin{0cm}
+% \titlecontents{chapter}[0pc]
+% {\addvspace{30pt}%
+%     \begin{tikzpicture}[remember picture, overlay]%
+%         \draw[fill=doc!30,draw=doc!30] (-4,-.1) rectangle (-1,.5);%
+%         \pgftext[left,x=-3.7cm,y=0.2cm]{\color{white}\Large\sc\bfseries chapter\ \thecontentslabel};%
+%     \end{tikzpicture}\color{doc!40}\large\sc\bfseries}%
+% {}
+% {}
+% {\;\titlerule\;\large\sc\bfseries Page \thecontentspage
+%     \begin{tikzpicture}[remember picture, overlay]
+%         \draw[fill=doc!25,draw=doc!20] (2pt,0) rectangle (6,0.1pt);
+%     \end{tikzpicture}}%
+% \titlecontents{section}[2.4pc]
+% {\addvspace{1pt}}
+% {\contentslabel[\thecontentslabel]{2.4pc}}
+% {}
+% {\hfill\small \thecontentspage}
+% []
+% \titlecontents*{subsection}[4pc]
+% {\addvspace{-1pt}\small}
+% {}
+% {}
+% {\ --- \small\thecontentspage}
+% [ \textbullet\ ][]
+% \makeatletter
+% \renewcommand{\tableofcontents}{%
+%     \section*{%
+%       \vspace*{-20\p@}%
+%       \begin{tikzpicture}[remember picture, overlay]%
+%           \pgftext[right,x=15cm,y=0.2cm]{\color{doc!30}\Huge\sc\bfseries \contentsname};%
+%           \draw[fill=doc!30,draw=doc!30] (13,-.75) rectangle (20,1);%
+%           \clip (13,-.75) rectangle (20,1);
+%           \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
+%       \end{tikzpicture}}%
+%     \@starttoc{toc}}
+% \makeatother
